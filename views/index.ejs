@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>BlogApp</title>
+</head>
+<body>
+    <%- include("partials/header.ejs") %>
+    <main>
+        <h2>Articles</h2>
+        <p></p>
+        <% if (posts.length == 0) {%>
+            <p class="no-posts">There is no articls in the moment.</p>
+        <%}else{%>    
+            <div class="post-list"> 
+                <%posts.forEach(post=>{%>
+                    <div class="post-card"> 
+                        <h3><%= post.title%></h3>
+                        <p><%= post.content%></p>
+                        <div class="post-actions">
+                            <a href="/edit/<%=post.id%>">Modify</a>
+                            <form action="/delet/<%=post.id%>" method="post">
+                                <button type="submit">Delet</button>
+                            </form>  
+                        </div>
+                    </div>  
+                    <hr>
+                <%})%>    
+             </div>   
+        <%}%>    
+
+
+        
+    </main>    
+
+
+
+
+
+
+
+
+
+
+
+
+    <%- include("partials/footer.ejs") %>
+</body>
+</html>
